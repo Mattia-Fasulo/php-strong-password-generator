@@ -8,6 +8,9 @@ if (isset($_GET['lenght'])) {
 
     $passwordLenght = $_GET['lenght'];
     $allowDuplicate = $_GET['allow-duplicate'] === 1 ? true : false;
+    $typeCharacter = (isset($_GET['type-character'])) ? $_GET['type-character'] : [];
+
+    var_dump($typeCharacter);
     
     $response = generatePassword($passwordLenght, $allowDuplicate);
 
@@ -65,24 +68,24 @@ include __DIR__ .'./partials/header.php';
                 <div class="row mb-3">
                     <div class="col-sm-4 offset-sm-8">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                            <label class="form-check-label" for="gridCheck1">
+                            <input class="form-check-input" type="checkbox" id="type-character" name="type-character[]" value="l">
+                            <label class="form-check-label" for="type-character">
                                 Lettere
                             </label>
                         </div>
                     </div>
                     <div class="col-sm-4 offset-sm-8">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                            <label class="form-check-label" for="gridCheck1">
+                            <input class="form-check-input" type="checkbox" id="type-character" name="type-character[]" value="n">
+                            <label class="form-check-label" for="type-character">
                                 Numeri
                             </label>
                         </div>
                     </div>
                     <div class="col-sm-4 offset-sm-8">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck1">
-                            <label class="form-check-label" for="gridCheck1">
+                            <input class="form-check-input" type="checkbox" id="type-character" name="type-character[]" value="s">
+                            <label class="form-check-label" for="type-character">
                                 Simboli
                             </label>
                         </div>

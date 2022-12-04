@@ -80,7 +80,7 @@ function generatePassword($passwordLenght, $allowDuplicate)
             session_start();
             $_SESSION["password"] = implode($password);
             var_dump($_SESSION);
-            // header('Location: ' . './result.php');
+            header('Location: ' . './result.php');
             
         }
         return $result;
