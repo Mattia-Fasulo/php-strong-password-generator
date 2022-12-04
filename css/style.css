@@ -10,7 +10,7 @@
 }
 
 body {
-  background-color: var(--bg-main);
+  /* background-color: var(--bg-main); */
 }
 
 .container {
@@ -22,8 +22,9 @@ h1 {
 }
 
 form {
+  background-color: var(--bg-main);
   border-radius: 10px;
-  background-color: white;
+  color: white;
   padding: 2rem;
-  width: 600px;
+  width: 800px;
 }
