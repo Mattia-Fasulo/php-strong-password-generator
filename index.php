@@ -7,7 +7,7 @@ include __DIR__ . './partials/function.php';
 if (isset($_GET['lenght'])) {
 
     $passwordLenght = $_GET['lenght'];
-    $allowDuplicate = $_GET['allow-duplicate'];
+    $allowDuplicate = $_GET['allow-duplicate'] === 1 ? true : false;
     
     $response = generatePassword($passwordLenght, $allowDuplicate);
 

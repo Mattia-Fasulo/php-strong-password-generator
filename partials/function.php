@@ -19,40 +19,68 @@ function generatePassword($passwordLenght, $allowDuplicate)
     } else {
         while (count($password) < intval($passwordLenght)) {
 
+            if ($allowDuplicate) {
 
-            $num = rand(1, 4);
+                $num = rand(1, 4);
+
+                if ($num == 1) {
+                    $index = rand(0, count($characters['alphabet']) - 1);
+                    $char = $characters['alphabet'][$index];
+                    $password[] = $char;
+                } elseif ($num == 2) {
+                    $index = rand(0, count($characters['alphabetUpp']) - 1);
+                    $char = $characters['alphabetUpp'][$index];
+                    $password[] = $char;
+                } elseif ($num == 3) {
+                    $index = rand(0, count($characters['numbers']) - 1);
+                    $char = $characters['numbers'][$index];
+                    $password[] = $char;
+                } else {
+                    $index = rand(0, count($characters['symbols']) - 1);
+                    $char = $characters['symbols'][$index];
+                    $password[] = $char;
+                }
 
 
-
-            if ($num == 1) {
-                $index = rand(0, count($characters['alphabet']) - 1);
-                $char = $characters['alphabet'][$index];
-                $password[] = $char;
-            } 
-            elseif ($num == 2) {
-                $index = rand(0, count($characters['alphabetUpp']) - 1);
-                $char = $characters['alphabetUpp'][$index];
-                $password[] = $char;
-            } 
-            elseif ($num == 3) {
-                $index = rand(0, count($characters['numbers']) - 1);
-                $char = $characters['numbers'][$index];
-                $password[] = $char;
-            } 
-            else {
-                $index = rand(0, count($characters['symbols']) - 1);
-                $char = $characters['symbols'][$index];
-                $password[] = $char;
             }
+            else{
+                $num = rand(1, 4);
 
-
-            }   
+                if ($num == 1) {
+                    $index = rand(0, count($characters['alphabet']) - 1);
+                    $char = $characters['alphabet'][$index];
+                    if(!in_array($char, $password)){
+                        $password[] = $char;
+                    }
+                    
+                } elseif ($num == 2) {
+                    $index = rand(0, count($characters['alphabetUpp']) - 1);
+                    $char = $characters['alphabetUpp'][$index];
+                    if(!in_array($char, $password)){
+                        $password[] = $char;
+                    }
+                } elseif ($num == 3) {
+                    $index = rand(0, count($characters['numbers']) - 1);
+                    $char = $characters['numbers'][$index];
+                    if(!in_array($char, $password)){
+                        $password[] = $char;
+                    }
+                } else {
+                    $index = rand(0, count($characters['symbols']) - 1);
+                    $char = $characters['symbols'][$index];
+                    if(!in_array($char, $password)){
+                        $password[] = $char;
+                    }
+                }
+            }
+        }
+              
             $result = implode($password);
 
             session_start();
             $_SESSION["password"] = implode($password);
             var_dump($_SESSION);
-            header('Location: ' . './result.php');
+            // header('Location: ' . './result.php');
             
         }
         return $result;
